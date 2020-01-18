@@ -1,13 +1,13 @@
 
 ## Result
-[Sport](https://oksanarutska.github.io/Sport/public/)
+[Shop-fizzy](https://oksanarutska.github.io/shop-fizzy/public/index)
 ## Technology
 - scss
 - js
 - gulp
 
 ## How to run?
-1. Run this command: ```git clone https://github.com/oksanarutska/Sport.git```
+1. Run this command: ```git clone https://github.com/oksanarutska/shop-fizzy.git```
 2. Restore packages: ```npm install```
 3. Run the project with a gulp: ```gulp default```
 
