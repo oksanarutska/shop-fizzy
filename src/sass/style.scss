@@ -1,0 +1,118 @@
+@import './reset';
+@import './variable';
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main_background {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-image: url('../img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.header {
+    margin: 0 auto;
+    font-size: 4.8em;
+    color: $color_white;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.product {
+    &_wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    &__name {
+        font-size: 3.6em;
+        font-weight: 300;
+        color: $color_white;
+        text-transform: uppercase;
+        line-height: 1.2;
+    }
+    &__img {
+        width: 9.3vw;
+    }
+}
+
+.product-decription {
+    &__sale {
+        font-size: 2.4em;
+        font-weight: 300;
+        color: $color_white;
+        text-transform: uppercase;
+        line-height: 1.2;
+    }
+    &__price {
+        position: relative;
+        font-size: 6em;
+        font-weight: 300;
+        color: $color_white;
+        text-transform: uppercase;
+        line-height: 1.2;
+        & span {
+            position: absolute;
+            top: 0;
+            right: 5px;
+            font-size: 2.4rem;
+            color: $color_white;
+            text-decoration: line-through;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+    }
+}
+
+.cart-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.drop {
+    position: relative;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    & .item {
+        font-size: 2.4rem;
+        color: $color_white;
+        text-transform: uppercase;
+        line-height: 1.2;
+    }
+    &__one-item {
+        font-size: 2.4rem;
+        color: $color_white;
+        text-transform: uppercase;
+        line-height: 1.2;
+        border-bottom: 2px solid $color_white;
+    }
+}
+
+.items-wrapper {
+    position: absolute;
+    top: 40px;
+    width: 240px;
+    height: 250px;
+    display: none;
+    flex-direction: column;
+    overflow: auto;
+}
+
+.active {
+    display: block;
+}
+
+.showDrop {
+    display: flex;
+}
