@@ -1,6 +1,6 @@
 
 ## Result
-[Shop-fizzy](https://oksanarutska.github.io/shop-fizzy/public/)
+[Shop-fizzy](https://oksanarutska.github.io/shop-fizzy/public/index)
 ## Technology
 - scss
 - js
