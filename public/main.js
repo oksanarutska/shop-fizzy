@@ -1,8 +1,7 @@
 let landing = {
     init: function() {
         let productsContainer = document.querySelector('#products');
-        let productOrder = document.querySelector('.select-product-wrapper')
-
+        let productOrder = document.querySelector('.select-product-wrapper');
         let products = [{
                     name: 'pineapple',
                     imgUrl: './img/product_1.png',
@@ -34,9 +33,6 @@ let landing = {
             ]
             .map(p => new Product(p, productsContainer));
 
-
-
-
         const shoppingCart = new ShoppingCart(productOrder, products);
 
         [...document.querySelectorAll('.img-cart')].forEach(e => {
@@ -46,61 +42,55 @@ let landing = {
         })
 
         document.querySelector('.overlay').addEventListener('click', function(e) {
-            shoppingCart.close()
+            shoppingCart.close();
         })
         document.querySelector('.order__header').addEventListener('click', function(e) {
-            shoppingCart.close()
+            shoppingCart.close();
         })
-
     },
-
-
-
 }
 landing.init();
 
-
 function SelectItem(select) {
-    let itemsBlock = select.querySelector('.items-wrapper')
-    let itemActive = select.querySelector('.active')
+    let itemsBlock = select.querySelector('.items-wrapper');
+    let itemActive = select.querySelector('.active');
     let isOpened = false;
-
-
+    // fill select options
     for (let i = 0; i < 51; i++) {
-        let div = document.createElement("div")
-        div.classList.add('item')
+        let div = document.createElement("div");
+        div.classList.add('item');
 
-        let p = document.createElement("p")
-        p.innerText = i
-        p.classList.add('item_view')
+        let p = document.createElement("p");
+        p.innerText = i;
+        p.classList.add('item_view');
 
-        let newBlock = itemsBlock.appendChild(div)
-        newBlock.appendChild(p)
+        let newBlock = itemsBlock.appendChild(div);
+        newBlock.appendChild(p);
     }
-
+    // open and close select
     itemActive.addEventListener('click', function(e) {
         if (!itemsBlock.classList.contains('items-wrapper_opened')) {
-            itemsBlock.classList.add('items-wrapper_opened')
-            isOpened = true
+            itemsBlock.classList.add('items-wrapper_opened');
+            isOpened = true;
         } else {
-            itemsBlock.classList.remove('items-wrapper_opened')
-            isOpened = false
+            itemsBlock.classList.remove('items-wrapper_opened');
+            isOpened = false;
         }
 
     })
 
     // close select, when user clicks ourside of select
     document.addEventListener('click', function(e) {
-        if (e.target !== itemActive) {
-            itemsBlock.classList.remove('items-wrapper_opened')
-            isOpened = false
-        }
-    })
-
+            if (e.target !== itemActive) {
+                itemsBlock.classList.remove('items-wrapper_opened');
+                isOpened = false;
+            }
+        })
+        // take select value
     itemsBlock.addEventListener('click', function(e) {
         if (e.target.classList.contains('item_view')) {
-            let item = e.target.textContent
-            itemActive.innerText = item
+            let item = e.target.textContent;
+            itemActive.innerText = item;
         }
     })
 
@@ -136,13 +126,8 @@ function Product(product, productsContainer) {
         </div>
     </div>
 `;
-
     productsContainer.appendChild(div);
-
-
-
-    const quantitySelect = new SelectItem(div.querySelector('.drop'))
-
+    const quantitySelect = new SelectItem(div.querySelector('.drop'));
     return {
         product: product,
 
@@ -154,7 +139,7 @@ function Product(product, productsContainer) {
 
 
 function ShoppingCart(container, products) {
-
+    //  render order products
     return {
         open: function() {
             products.filter(p => p.getQuantity() > 0)
@@ -172,17 +157,14 @@ function ShoppingCart(container, products) {
                     <p class="select-product__desc select-product__name">
                     ${p.product.name}
                     </p>
-            
                     <div class="select-product_wrapper-add">
                         <p class="select-product__desc select-product__desc_b ">
                             qta: <span class="select-product__descselect-product__desc select-product__desc_b   select-product__quantity">${p.getQuantity()}</span>
                         </p>
-            
                         <p class="select-product__price">${p.product.currency}${(p.product.price * p.getQuantity()).toFixed(2)}</p>
                     </div>
-            
                 </div>`
-                    container.appendChild(div)
+                    container.appendChild(div);
                 })
 
             var count = products.map(p => {
@@ -191,17 +173,15 @@ function ShoppingCart(container, products) {
             }).reduce((curr, acum) => {
                 return curr + acum
             })
-            document.querySelector('.count').innerText = count.toFixed(2)
-
+            document.querySelector('.count').innerText = count.toFixed(2);
             document.querySelector('.order_wrapper').classList.add('order-visible');
-            document.querySelector('.overlay').classList.add('overlay-visible')
+            document.querySelector('.overlay').classList.add('overlay-visible');
         },
 
         close: function() {
             container.innerHTML = ''
             document.querySelector('.order_wrapper').classList.remove('order-visible');
-            document.querySelector('.overlay').classList.remove('overlay-visible')
-
+            document.querySelector('.overlay').classList.remove('overlay-visible');
         }
     };
 }
