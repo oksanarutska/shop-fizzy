@@ -173,7 +173,7 @@ function ShoppingCart(container, products) {
             }).reduce((curr, acum) => {
                 return curr + acum
             })
-            document.querySelector('.count').innerText = count.toFixed(2);
+            document.querySelector('.count').innerText = `$${count.toFixed(2)}`;
             document.querySelector('.order_wrapper').classList.add('order-visible');
             document.querySelector('.overlay').classList.add('overlay-visible');
         },
